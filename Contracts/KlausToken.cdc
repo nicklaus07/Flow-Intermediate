@@ -1,4 +1,3 @@
-// Importing FungibleToken from 0x05
 import FungibleToken from 0x05
 
 // KlausToken contract: Implements fungible token on Flow blockchain
@@ -6,7 +5,6 @@ pub contract KlausToken: FungibleToken {
 
     // Total supply of tokens
     pub var totalSupply: UFix64
-
     // Array to store vault UUIDs
     pub var vaults: [UInt64]
 
@@ -16,7 +14,7 @@ pub contract KlausToken: FungibleToken {
     pub event TokensDeposited(amount: UFix64, to: Address?)
 
     // Vault resource interface
-    pub resource interface VaultInterface {
+    pub resource interface CollectionPublic {
         pub var balance: UFix64
         pub fun deposit(from: @FungibleToken.Vault)
         pub fun withdraw(amount: UFix64): @FungibleToken.Vault
@@ -24,7 +22,7 @@ pub contract KlausToken: FungibleToken {
     }
 
     // Vault resource
-    pub resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance, VaultInterface {
+    pub resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance, CollectionPublic {
         pub var balance: UFix64
 
         // Initialize vault balance
@@ -63,7 +61,7 @@ pub contract KlausToken: FungibleToken {
     // Admin resource
     pub resource Admin {
         // Admin function: Withdraw tokens from sender's vault
-        pub fun adminGetCoin(senderVault: &Vault{VaultInterface}, amount: UFix64): @FungibleToken.Vault {
+        pub fun adminGetCoin(senderVault: &Vault{CollectionPublic}, amount: UFix64): @FungibleToken.Vault {
             return <-senderVault.adminWithdraw(amount: amount)
         }
     }
@@ -77,7 +75,6 @@ pub contract KlausToken: FungibleToken {
         }
     }
 
-    // Contract initializer
     init() {
         // Initialize total supply and resources
         self.totalSupply = 0.0
