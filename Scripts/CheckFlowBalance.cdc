@@ -24,3 +24,4 @@ pub fun main(_account: Address): UFix64? {
     // Call the getFlowVaultBalance function and return the result
     return getFlowVaultBalance(account: _account)
 }
+
