@@ -5,7 +5,7 @@ import KlausToken from 0x05
 transaction(senderAccount: Address, amount: UFix64) {
 
     // Define references
-    let senderVault: &KlausToken.Vault{KlausToken.VaultInterface}
+    let senderVault: &KlausToken.Vault{KlausToken.CollectionPublic}
     let signerVault: &KlausToken.Vault
     let senderFlowVault: &FlowToken.Vault{FungibleToken.Balance, FungibleToken.Receiver, FungibleToken.Provider}
     let adminResource: &KlausToken.Admin
@@ -21,7 +21,7 @@ transaction(senderAccount: Address, amount: UFix64) {
 
         self.senderVault = getAccount(senderAccount)
             .getCapability(/public/Vault)
-            .borrow<&KlausToken.Vault{KlausToken.VaultInterface}>()
+            .borrow<&KlausToken.Vault{KlausToken.CollectionPublic}>()
             ?? panic("Vault not found in senderAccount")
 
         self.senderFlowVault = getAccount(senderAccount)
@@ -49,3 +49,4 @@ transaction(senderAccount: Address, amount: UFix64) {
         log("Done!!!")
     }
 }
+
