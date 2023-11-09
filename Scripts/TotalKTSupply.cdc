@@ -1,13 +1,8 @@
-import FungibleToken from 0x05
 import KlausToken from 0x05
 
-pub fun main(account: Address) {
+pub fun main() {
 
-    // Borrow the public vault capability, specializing it for balance
-    let publicVault = getAccount(account)
-        .getCapability(/public/Vault)
-        .borrow<&KlausToken.Vault{FungibleToken.Balance}>()
-        ?? panic("Unable to access the vault. Please check the setup.")
+  // Log the total supply of the Token                 
+  log(KlausToken.totalSupply)
 
-    log("Vault setup verified successfully.")
 }
