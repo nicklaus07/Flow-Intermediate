@@ -57,4 +57,3 @@ pub contract SwapToken {
         self.userLastSwapTimestamps = {0x01: 1.0}
     }
 }
-
