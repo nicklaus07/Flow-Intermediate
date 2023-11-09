@@ -8,7 +8,6 @@ pub contract SwapToken {
 
     // Store the last swap timestamp for the contract
     pub var lastSwapTimestamp: UFix64
-    
     // Store the last swap timestamp for each user
     pub var userLastSwapTimestamps: {Address: UFix64}
 
@@ -58,3 +57,4 @@ pub contract SwapToken {
         self.userLastSwapTimestamps = {0x01: 1.0}
     }
 }
+
