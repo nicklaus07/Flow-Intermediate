@@ -1,6 +1,6 @@
 ## Flow-Intermediate - KlausToken
 
-This repository is the final project of Flow blockchain intermediate course which is a custom Fungible Token contract and related transactions and scripts. 
+This repository is the final challenge of Flow blockchain intermediate course which is a custom Fungible Token contract and related transactions and scripts. 
 
 ## Requirements
 
